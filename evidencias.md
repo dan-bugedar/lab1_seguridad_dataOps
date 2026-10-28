@@ -9,21 +9,21 @@ Registra lo que observaste realmente. No pegues claves, tokens ni datos recupera
 | Recuperar correo en 1A | True | True | Se cifro el correo y se pudo recuperar correctamente ya que el texto obtenido coincide con el original.|
 | Comparar original | True | True | El hash SHA-256 del archivo original coincide con el hash de referencia previamente calculado. Esto indica que el archivo conserva su integridad y no presenta modificaciones respecto a la referencia. |
 | Comparar copia alterada | False | False | El hash de la copia alterada no coincide con el hash de referencia, ya que se modificó el contenido del archivo. Esto demuestra que el control de integridad permite detectar modificaciones |
-| Ejecutar como operador | 12 filas | Por completar | |
-| Consultar como analista | 3 ciudades y total 10750.00 | Por completar | |
-| Recuperar como operador | Muestra ficticia coincidente | Por completar | |
-| Ejecutar como analista | Bloqueado sin destino nuevo | Por completar | |
-| Ejecutar con rol desconocido | Bloqueado sin destino nuevo | Por completar | |
-| Recuperar como auditor | Bloqueado | Por completar | |
-| Procesar copia alterada | Bloqueado sin salidas/alterada | Por completar | |
+| Ejecutar como operador | 12 filas | 12 filas | La operación se ejecutó correctamente porque el rol operador tiene permiso para ejecutar el pipeline. Se procesaron los 12 registros y se generaron los archivos de salida.|
+| Consultar como analista | 3 ciudades y total 10750.00 | 3 ciudades y total 10750.00 | El resumen agrupó las ventas por ciudad y calculó los totales correctamente. Se excluyeron los pedidos cancelados y el total de control fue 10750.00.|
+| Recuperar como operador | Muestra ficticia coincidente | Muestra ficticia coincidente | La operación fue autorizada para el rol operador y permitió recuperar la muestra ficticia esperada|
+| Ejecutar como analista | Bloqueado sin destino nuevo | BLOQUEADO: Rol u operación no autorizados |La operación fue denegada porque el rol analista solo tiene permiso para consultar el resumen. No se creó el destino indicado, evitando una ejecución no autorizada. |
+| Ejecutar con rol desconocido | Bloqueado sin destino nuevo | BLOQUEADO: Rol u operación no autorizados | El sistema rechazó la operación porque el rol no está definido en la lista de permisos. La denegación por defecto impide que perfiles desconocidos ejecuten el pipeline.|
+| Recuperar como auditor | Bloqueado | BLOQUEADO: Rol u operación no autorizados | La recuperación fue denegada porque el rol auditor no tiene permiso para recuperar información. Esto limita el acceso a datos protegidos según el principio de mínimo privilegio.|
+| Procesar copia alterada | Bloqueado sin salidas/alterada | BLOQUEADO: Rol u operación no autorizados |El sistema detectó que el archivo de entrada no coincide con la referencia de integridad y bloqueó el procesamiento. No se debe recalcular la referencia para aceptar el archivo modificado. |
 
 ## Archivos de salida
 
-Destino válido utilizado: ____________________
+Destino válido utilizado: salidas/lab1
 
-Filas de detalle: ____  Filas de resumen: ____
+Filas de detalle: 12  Filas de resumen: 3
 
-Totales observados por ciudad: ____________________
+Totales observados por ciudad: Mérida: 4000.00; Puebla: 2500.00; Villahermosa: 4250.00
 
 ## Reflexión
 
