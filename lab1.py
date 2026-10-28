@@ -43,7 +43,15 @@ def calcular_hash(ruta):
 def autorizar(rol, operacion):
     # TODO 2: usar PERMISOS; denegar roles desconocidos.
     # Sin permiso: lanzar PermissionError, sin datos personales.
-    raise NotImplementedError('TODO 2: autorizar')
+    
+    # Consultar los permisos asignados al rol.
+    permisos_rol = PERMISOS.get(rol)
+
+    # Denegar roles desconocidos u operaciones no permitidas.
+    if permisos_rol is None or operacion not in permisos_rol:
+        raise PermissionError("Rol u operación no autorizados")
+    
+    return
 
 
 def cifrar(valor, fernet):
